@@ -1,7 +1,11 @@
-import BooksView from "./BooksView";
+import Home from "./Home.jsx";
 
 function App() {
-  return <>{<BooksView />}</>;
+  return (
+    <>
+      <Home />
+    </>
+  );
 }
 
 export default App;
