@@ -1,16 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import booksReducer from "./booksReducer";
+import { setupListeners } from '@reduxjs/toolkit/query'
 import { pokemonApi } from "../pokemon";
+import { todoApi } from "../todosSlice";
+
 export const store = configureStore({
     reducer: {
         // books: booksReducer,
-        [pokemonApi.reducerPath]: pokemonApi.reducer
+        [pokemonApi.reducerPath]: pokemonApi.reducer,
+        [todoApi.reducerPath]: todoApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(pokemonApi.middleware),
+        getDefaultMiddleware().concat(todoApi.middleware),
 })
 
 
+setupListeners(store.dispatch)
 
 
 

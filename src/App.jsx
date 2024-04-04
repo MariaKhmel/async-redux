@@ -1,9 +1,12 @@
-import Home from "./Home.jsx";
+// import Home from "./Home.jsx";
+
+import ToDosPage from "./ToDosPage";
 
 function App() {
   return (
     <>
-      <Home />
+      {/* <Home /> */}
+      <ToDosPage />
     </>
   );
 }
