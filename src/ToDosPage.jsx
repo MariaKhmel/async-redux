@@ -5,7 +5,7 @@ import {
 } from "./todosSlice";
 
 const ToDosPage = () => {
-  const { data, error, isFetching, isError } = useFetchToDosQuery();
+  const { data, isFetching } = useFetchToDosQuery();
   const [deleteToDo] = useDeleteToDoMutation();
   const [createToDo] = useCreateToDoMutation();
 

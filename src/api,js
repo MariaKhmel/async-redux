@@ -1,0 +1,4 @@
+export const getToDos = async () => {
+  const data = await fetch("dddd");
+  return data.json();
+};
