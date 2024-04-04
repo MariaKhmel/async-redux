@@ -1,4 +1,4 @@
-export const getToDos = async () => {
+export const getNews = async () => {
   const data = await fetch("dddd");
   return data.json();
 };
