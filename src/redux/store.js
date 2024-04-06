@@ -1,20 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { pokemonApi } from "../pokemon";
 import { todoApi } from "../todosSlice";
-import { productsSlice } from "../products/slice";
+import { productReducer } from "../products/slice";
+import { productsApi } from "../products/productsApi";
 // import { newsReducer } from "./newsReducer";
+const reducer = combineReducers({
+    // books: booksReducer,
+    // [pokemonApi.reducerPath]: pokemonApi.reducer,
+    // [todoApi.reducerPath]: todoApi.reducer,
+    // products: productReducer,
+    // [productsApi.reducerPath]: productsApi.reducer
+    products: productReducer
 
+})
 export const store = configureStore({
-    reducer: {
-        // books: booksReducer,
-        [pokemonApi.reducerPath]: pokemonApi.reducer,
-        [todoApi.reducerPath]: todoApi.reducer,
-        // news: newsReducer
-        productsSlice: productsSlice
-    },
+    reducer,
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(todoApi.middleware),
+        getDefaultMiddleware().concat(productsApi.middleware),
 })
 
 

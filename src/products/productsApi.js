@@ -1,19 +1,21 @@
-const BASE_URL = 'https://api.escuelajs.co/api/vi'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const getProducts = async () => {
-    const data = await fetch(`${BASE_URL}/products}`)
-    return await data.json();
-}
 
-export const createProducts = async (data) => {
-    const res = await fetch(`${BASE_URL}/products}`, {
-        body: JSON.stringify(data)
+export const productsApi = createApi({
+    reducerPath: 'products',
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://api.escuelajs.co/api/v1' }),
+    tagTypes: ['Products'],
+    endpoints: (builder) => ({
+        getProducts: builder.query({
+            query: () => '/products',
+            providesTags: ['Products'],
+        }),
+        deleteProducts: builder.mutation({
+            query: (id) => ({ url: `/products/${id}`, method: 'DELETE' }),
+            invalidatesTags: ['Products'],
+        })
     })
+})
 
-    return await res.json();
-}
-
-export const deleteProducts = async (id) => {
-    const res = await fetch(`${BASE_URL}/products/${id}}`);
-    return await res.json()
-}
+export const { useGetProductsQuery,
+    useDeleteProductsMutation } = productsApi;

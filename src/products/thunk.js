@@ -1,8 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { createProducts, deleteProducts, getProducts } from "./productsApi"
+import { createProducts, deleteProducts, getProducts } from "./products"
+
+// export const initialState = {
+//     products: null,
+//     isLoading: false,
+//     error: ''
+// }
+
 
 export const initialState = {
-    products: null,
+    pokemons: [],
     isLoading: false,
     error: ''
 }
